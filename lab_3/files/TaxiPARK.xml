@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cars>
+    <Car id="1">
+        <CarNumber>292929</CarNumber>
+        <CarType>sedan</CarType>
+        <Machine>
+            <EngineVolume>1400</EngineVolume>
+            <EngineType>Diesel</EngineType>
+        </Machine>
+    </Car>
+    <Car id="2">
+        <CarNumber>111111VK</CarNumber>
+        <CarType>crossover</CarType>
+        <Machine>
+            <EngineVolume>2000</EngineVolume>
+            <EngineType>Petrol</EngineType>
+        </Machine>
+    </Car>
+    <Car id="3">
+        <CarNumber>888888SK</CarNumber>
+        <CarType>crossover</CarType>
+        <Machine>
+            <EngineVolume>1600</EngineVolume>
+            <EngineType>Petrol</EngineType>
+        </Machine>
+    </Car>
+</Cars>

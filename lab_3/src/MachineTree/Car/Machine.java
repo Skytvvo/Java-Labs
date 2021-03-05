@@ -2,8 +2,10 @@ package MachineTree.Car;
 
 import org.apache.log4j.Logger;
 
+import java.io.Serializable;
+
 //Internal class Engine
-public class Machine {
+public class Machine implements Serializable {
     private static final Logger LOG =
             Logger.getLogger(Machine.class);
 
@@ -19,6 +21,10 @@ public class Machine {
         this.setEngineVolume(EngineVolume);
         this.setEngineType(EngineType);
         LOG.info("Created Engine");
+
+    }
+    public  Machine()
+    {
 
     }
 
@@ -44,5 +50,15 @@ public class Machine {
 
     public TypesOfEngine getEngineType() {
         return EngineType;
+    }
+
+    public static TypesOfEngine GetEngineTypeByName(String name)
+    {
+        if(name.equals(TypesOfEngine.Diesel.toString() ))
+            return TypesOfEngine.Diesel;
+         if(name.equals(TypesOfEngine.Petrol.toString() ))
+            return TypesOfEngine.Petrol;
+
+        return null;
     }
 }

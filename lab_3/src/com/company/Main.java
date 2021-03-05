@@ -1,13 +1,15 @@
 package com.company;
-
 import MachineTree.Car.Car;
-import MachineTree.Car.Machine;
-import MachineTree.Car.Skoda.Octavia;
-import MachineTree.Car.VK.Polo;
+import PARSER.STAXPARSER;
+import Serializable.Serializator;
 import TaxiPark.Park.Park;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
+
+import javax.xml.stream.XMLStreamException;
+import java.io.FileNotFoundException;
 
 public class Main {
 
@@ -17,29 +19,32 @@ public class Main {
     }
     private static final Logger LOG = Logger.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
         LOG.info("Starting program_____________________________");
+
         Park TaxiPark = new Park();
 
-        Machine eng1 = new Machine(1400, Machine.TypesOfEngine.Petrol);
-        Machine eng2 = new Machine(1900, Machine.TypesOfEngine.Diesel);
-        Machine eng3 = new Machine(1600, Machine.TypesOfEngine.Petrol);
+        
+        STAXPARSER staxparser = new STAXPARSER();
+        staxparser.buildSetPark();
+        TaxiPark.setTaxis(staxparser.getPark());
 
-        Polo VK1 = new Polo(eng1, "TX1010");
-        Polo VK2 = new Polo(eng2, "TX0001");
-        Octavia SK1 = new Octavia(eng3, "TX2020");
+        for (Car car : TaxiPark.getTaxi()) {
+            System.out.println("==========");
+            System.out.println(car.getCarNumber());
+            System.out.println(car.getCarType());
+            System.out.println(car.getEngine().getEngineType());
+            System.out.println(car.getEngine().getEngineVolume());
+        }
 
-        TaxiPark.setTaxi(VK1);
-        TaxiPark.setTaxi(VK2);
-        TaxiPark.setTaxi(SK1);
+        Serializator serializator = new Serializator();
+        serializator.DeSer()
+                .getTaxi()
+                .stream()
+                .filter(item -> item.getEngine().getEngineVolume() < 2000)
+                .map(item -> item.getEngine().getEngineVolume()+400)
+                .forEach(System.out::println);
 
-        TaxiPark.director.CountParkCost();
-        TaxiPark.director.PrintPark();
 
-        TaxiPark.director.SortPark();
-        System.out.println();
-
-        TaxiPark.director.PrintPark();
-        TaxiPark.director.FindCar(40,200);
     }
 }

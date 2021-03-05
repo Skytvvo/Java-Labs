@@ -3,8 +3,9 @@ package MachineTree.Car;
 import org.apache.log4j.Logger;
 
 import java.io.Console;
+import java.io.Serializable;
 
-public abstract class Car implements CarActions {
+public class Car implements CarActions, Serializable {
     private static final Logger LOG =
             Logger.getLogger(Car.class);
 
@@ -27,6 +28,10 @@ public abstract class Car implements CarActions {
 
     }
 
+    public Car()
+    {
+
+    }
 
 
     //Car engine
@@ -75,5 +80,19 @@ public abstract class Car implements CarActions {
     {
         EngineIgnition();
         System.out.println("The car went to the route");
+    }
+
+    public  static TypesOfCar GetTypeOfCarByName(String name)
+    {
+        if( name.equals(TypesOfCar.sedan.toString()))
+            return TypesOfCar.sedan;
+         if(name.equals(TypesOfCar.compartment.toString()))
+            return TypesOfCar.compartment;
+         if( name.equals(TypesOfCar.crossover.toString()))
+            return TypesOfCar.crossover;
+         if( name.equals(TypesOfCar.crossover.toString() ))
+            return TypesOfCar.hatchback;
+
+         return null;
     }
 }

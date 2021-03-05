@@ -4,14 +4,16 @@ import MachineTree.Car.Car;
 import MachineTree.Car.Machine;
 import org.apache.log4j.Logger;
 
-
-import java.io.Console;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Park {
+public class Park implements Serializable {
+
+    public void setTaxis(ArrayList<Car> taxi) {
+        Taxi = taxi;
+    }
 
     private static final Logger LOG =
             Logger.getLogger(Park.class);
@@ -31,6 +33,8 @@ public class Park {
     //Car Park
     private ArrayList<Car> Taxi;
 
+
+
     public ArrayList<Car> getTaxi() {
         return Taxi;
     }
@@ -39,7 +43,7 @@ public class Park {
         Taxi.add(taxi);
     }
 
-    public class Director {
+    public class Director implements Serializable {
 
         public void CountParkCost()
         {

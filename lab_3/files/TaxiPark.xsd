@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Cars">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Car">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="CarNumber" type="xs:unsignedInt" />
+                            <xs:element name="CarType" type="xs:string" />
+                            <xs:element name="Machine">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="EngineVolume" type="xs:unsignedShort" />
+                                        <xs:element name="EngineType" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
