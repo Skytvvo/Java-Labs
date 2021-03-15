@@ -24,7 +24,7 @@ public class Main {
 
         Park TaxiPark = new Park();
 
-        
+
         STAXPARSER staxparser = new STAXPARSER();
         staxparser.buildSetPark();
         TaxiPark.setTaxis(staxparser.getPark());
