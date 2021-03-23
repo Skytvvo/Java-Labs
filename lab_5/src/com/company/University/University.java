@@ -6,30 +6,22 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-public class University<T> {
+public class University  {
 
-    private final static int POOL_SIZE = 6; // размер пула
-    private final Semaphore semaphore = new Semaphore(POOL_SIZE, true);
-    private final Queue<T> resources = new LinkedList<T>();
-    public University(Queue<T> source) {
-        resources.addAll(source);
+    public int id;
+    public  University(int id)
+    {
+        this.id = id;
     }
 
-    public T getResource(long maxWaitMillis) throws Exception {
+    public synchronized void Enter(int st)
+    {
+        System.out.println("Student "+st+" entered to "+this.id);
         try {
-            if (semaphore.tryAcquire(maxWaitMillis, TimeUnit.MILLISECONDS)) {
-                T res = resources.poll();
-                return res;
-            }
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
-            throw new Exception(e);
+            e.printStackTrace();
         }
-        throw new Exception(":превышено время ожидания");
-    }
-
-    public void returnResource(T res) {
-        resources.add(res); // возвращение экземпляра в пул
-        semaphore.release();
     }
 }
 

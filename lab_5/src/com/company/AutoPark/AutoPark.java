@@ -10,6 +10,7 @@ public class AutoPark {
     ArrayList<Car> second = new ArrayList<>(4);
     ReentrantLock locker = new ReentrantLock();
 
+
     public AutoPark()
     {
         first.add(null);
@@ -33,6 +34,7 @@ public class AutoPark {
                 System.out.println("Car "+ car.number + " found in 1");
                 c = car;
                 locker.unlock();
+
                 return;
             }
         }
@@ -50,6 +52,8 @@ public class AutoPark {
                 System.out.println("Car "+ car.number + " found in 2");
                 c = car;
                 locker.unlock();
+
+
                 return;
             }
         }
